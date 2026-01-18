@@ -1,6 +1,6 @@
-# Synergy BO1 GSC Menu
+# Synergy IW6 GSC Menu
 
-A Ghosts Extinction GSC Mod Menu
+A Ghosts Extinction GSC Mod Menu that uses [IW6-Mod](https://alterware.dev/)
 
 This Menu is a Work-In-Progress, so expect changes and possibly some Bugs
 
