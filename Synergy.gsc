@@ -223,9 +223,9 @@ initialize_menu() {
 
 						self.menu["options"] set_text("Open: ^3[{+speed_throw}] ^7and ^3[{+melee}]\n\nScroll: ^3[{+speed_throw}] ^7and ^3[{+attack}]\n\nSelect: ^3[{+activate}] ^7Back: ^3[{+melee}]\n\nSliders: ^3[{+smoke}] ^7and ^3[{+frag}]");
 
-						self.menu["border"] set_shader("white", self.menu["border"].width, 88);
-						self.menu["background"] set_shader("white", self.menu["background"].width, 86);
-						self.menu["foreground"] set_shader("white", self.menu["foreground"].width, 71);
+						self.menu["border"] set_shader("white", self.menu["border"].width, 83);
+						self.menu["background"] set_shader("white", self.menu["background"].width, 81);
+						self.menu["foreground"] set_shader("white", self.menu["foreground"].width, 66);
 
 						self.controls_menu_open = true;
 
@@ -936,7 +936,7 @@ add_menu(title) {
 
 	title_width = get_title_width(title);
 
-	self.menu["title"].x = (self.x_offset + ceil((((-0.0000124 * title_width + 0.003832) * title_width - 0.52) * title_width + 115.258) * 10) / 10);
+	self.menu["title"].x = (self.x_offset + ceil((((-0.000014 * title_width + 0.003832) * title_width - 0.52) * title_width + 110.258) * 10) / 10);
 	self.menu["title"].y = (self.y_offset + 3);
 
 	self.current_title = title;
