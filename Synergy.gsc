@@ -208,7 +208,7 @@ initialize_menu() {
 						self.menu["title"] = self create_text("Synergy", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 94.5), (self.y_offset + 3), (1, 1, 1), 1, 10);
 						self.menu["description"] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 5), (self.y_offset + (self.option_limit * 17.5)), (0.75, 0.75, 0.75), 0, 10);
 
-						self.menu["options"] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 13.5), (self.y_offset + 19), (0.75, 0.75, 0.75), 1, 10);
+						self.menu["options"] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 5), (self.y_offset + 19), (0.75, 0.75, 0.75), 1, 10);
 						self.menu["submenu_icons"] = self create_text("", self.font, self.font_scale, "TOP_LEFT", "TOPCENTER", (self.x_offset + 215), ((self.y_offset + 19)), (0.75, 0.75, 0.75), 0, 10);
 
 						for(i = 1; i <= self.option_limit; i++) {
@@ -283,12 +283,10 @@ input_manager() {
 					wait 0.2;
 				}
 			} else if(self adsButtonPressed() && !self attackButtonPressed() || self attackButtonPressed() && !self adsButtonPressed()) {
-
 				scroll_cursor(set_variable(self attackButtonPressed(), "down", "up"));
 
 				wait (0.2);
 			} else if(self fragButtonPressed() && !self secondaryOffhandButtonPressed() || !self fragButtonPressed() && self secondaryOffhandButtonPressed()) {
-
 				if(isDefined(self.structure[self.cursor_index].array) || isDefined(self.structure[self.cursor_index].increment)) {
 					scroll_slider(set_variable(self secondaryOffhandButtonPressed(), "left", "right"));
 				}
@@ -588,9 +586,9 @@ update_element_positions() {
 
 	self.menu["description"].y = (self.y_offset + (self.option_limit * 17.5));
 
-	self.menu["options"].x = (self.x_offset + 13.5);
+	self.menu["options"].x = (self.x_offset + 5);
 	self.menu["options"].y = (self.y_offset + 19);
-	
+
 	self.menu["submenu_icons"].x = (self.x_offset + 215);
 	self.menu["submenu_icons"].y = (self.y_offset + 19);
 
@@ -1097,7 +1095,7 @@ set_options() {
 		self.menu["toggle_" + i].alpha = 0;
 		self.menu["slider_" + i].alpha = 0;
 		self.menu["slider_text_" + i] set_text("");
-		
+
 		self.menu["options"] add_text("", i);
 		self.menu["submenu_icons"] add_text("", i);
 	}
@@ -1208,9 +1206,9 @@ menu_option() {
 		case "Basic Options":
 			self add_menu(menu);
 
-			self add_toggle("God Mode", "Makes you Invincible", ::god_mode, self.god_mode);
-			self add_toggle("Frag No Clip", "Fly through the Map using (^3[{+frag}]^7)", ::frag_no_clip, self.frag_no_clip);
-			self add_toggle("Infinite Ammo", "Gives you Infinite Ammo and Infinite Grenades", ::infinite_ammo, self.infinite_ammo);
+			self add_toggle("    God Mode", "Makes you Invincible", ::god_mode, self.god_mode);
+			self add_toggle("    Frag No Clip", "Fly through the Map using (^3[{+frag}]^7)", ::frag_no_clip, self.frag_no_clip);
+			self add_toggle("    Infinite Ammo", "Gives you Infinite Ammo and Infinite Grenades", ::infinite_ammo, self.infinite_ammo);
 
 			self add_increment("Set Points", undefined, ::set_points, 500, 0, 100000, 500);
 			self add_increment("Set Max Points", undefined, ::set_max_points, 500, 0, 100000, 500);
@@ -1231,9 +1229,9 @@ menu_option() {
 		case "Fun Options":
 			self add_menu(menu);
 
-			self add_toggle("Fullbright", "Removes all Shadows and Lighting", ::fullbright, self.fullbright);
-			self add_toggle("Third Person", undefined, ::third_person, self.third_person);
-			self add_toggle("LOL Easter Egg", undefined, ::lol_easter_egg, self.lol_easter_egg);
+			self add_toggle("    Fullbright", "Removes all Shadows and Lighting", ::fullbright, self.fullbright);
+			self add_toggle("    Third Person", undefined, ::third_person, self.third_person);
+			self add_toggle("    LOL Easter Egg", undefined, ::lol_easter_egg, self.lol_easter_egg);
 
 			self add_option("Visions", undefined, ::new_menu, "Visions");
 
@@ -1241,15 +1239,15 @@ menu_option() {
 		case "Alien Options":
 			self add_menu(menu);
 
-			self add_toggle("No Target", "Aliens won't Target You", ::no_target, self.no_target);
+			self add_toggle("    No Target", "Aliens won't Target You", ::no_target, self.no_target);
 
 			self add_option("Spawn Aliens", undefined, ::new_menu, "Spawn Aliens");
 			self add_option("Kill All Aliens", undefined, ::kill_all_aliens);
 			self add_option("Teleport Aliens to Me", undefined, ::teleport_aliens);
 
-			self add_toggle("One Shot Aliens", undefined, ::one_shot_aliens, self.one_shot_aliens);
-			self add_toggle("Freeze Aliens", undefined, ::freeze_aliens, self.freeze_aliens);
-			self add_toggle("Disable Alien Spawns", undefined, ::aliens_spawn, self.aliens_spawn);
+			self add_toggle("    One Shot Aliens", undefined, ::one_shot_aliens, self.one_shot_aliens);
+			self add_toggle("    Freeze Aliens", undefined, ::freeze_aliens, self.freeze_aliens);
+			self add_toggle("    Disable Alien Spawns", undefined, ::aliens_spawn, self.aliens_spawn);
 
 			self add_array("Alien ESP", "Set Colored Outlines around Aliens", ::set_outline_color, ["None", "White", "Red", "Green", "Aqua", "Orange", "Yellow"]);
 
@@ -1278,8 +1276,8 @@ menu_option() {
 			self add_increment("Green", "Set the Green Value for the Menu Outline Color", ::set_menu_color, 255, 1, 255, 1, "Green");
 			self add_increment("Blue", "Set the Blue Value for the Menu Outline Color", ::set_menu_color, 255, 1, 255, 1, "Blue");
 
-			self add_toggle("Hide UI", undefined, ::hide_ui, self.hide_ui);
-			self add_toggle("Hide Weapon", undefined, ::hide_weapon, self.hide_weapon);
+			self add_toggle("    Hide UI", undefined, ::hide_ui, self.hide_ui);
+			self add_toggle("    Hide Weapon", undefined, ::hide_weapon, self.hide_weapon);
 
 			break;
 		case "All Players":
